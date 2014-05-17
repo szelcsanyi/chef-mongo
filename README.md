@@ -1,13 +1,11 @@
-# memcached cookbook
-[![Build Status](https://travis-ci.org/szelcsanyi/chef-memcached.svg?branch=master)](https://travis-ci.org/szelcsanyi/chef-memcached)
+# mongo cookbook
+[![Build Status](https://travis-ci.org/szelcsanyi/chef-mongo.svg?branch=master)](https://travis-ci.org/szelcsanyi/chef-mongo)
 
 ## Description
 
-Configures [Memcached](http://memcached.org) via Opscode Chef
+Configures [Mongodb](http://mongodb.org) via Opscode Chef
 
-It can handle multiple instances with different configuratioins on the same machine.
-
-Currently only one version is supported.
+It can handle multiple instances with different configuratioins and differend versions on the same machine.
 
 ## Supported Platforms
 
@@ -16,39 +14,32 @@ Currently only one version is supported.
 
 ## Recipes
 
-* `memcached` - The default no-op recipe.
+* `mongo` - The default no-op recipe.
 
 ## Providers
-* `memcached_pool` - Configures memcached instance
+* `mongo_db` - Configures mongodb instance
 
 ## Usage
 ###Provider parameters:
 
-* `tcp_port`: tcp listen port (default 11211)
-* `udp_port`: udp listen port (default 0, disable)
-* `listen`: listen address (default "127.0.0.1")
-* `connection_limit`: client connection limit (default 1024)
-* `size`: database size in megabytes (defaul 16)
-* `repcache_port`: repcache port (default not set)
-* `repcache_listen`: repcache listen address (default not set)
-* `verbose`: verbose logging (default not set, [-v or -vv])
+* `url`: url for mongodb binary
+* `home`: directory for mongodb instance (default "/opt")
+* `bind_ip`: listen address (default "127.0.0.1")
+* `port`: listen port (default 27017)
+* `default_instance`: creates symlink (default false)
+* `replSet`: replica set name (default not set)
 
-#### A memcached instance with default settings:
+#### A mongodb instance with custom parameters:
 ```ruby
-memcached_pool "basic_example"
-```
-
-#### A memcached instance with custom parameters:
-```ruby
-memcached_pool "extended_example" do
-    port "11212"
-    bind "0.0.0.0"
-    size 64
+mongo_db "example" do
+    port '27017'
+    bind_ip '127.0.0.1'
+    default_instance true
 end
 ```
 
 ## TODO
-Implement multiversion support.
+Implement sharded cluster support.
 
 ## Contributing
 
