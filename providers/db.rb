@@ -91,7 +91,7 @@ action :create do
 	end
 
 	filename=::File.basename(new_resource.url)
-	dirname=::File.basename(filename, '.tar.gz')
+	dirname=filename.sub(/(\.tar\.gz$|\.tgz$)/,"")
 
 	bash "get_mongodb_binary" do
 		user "root"
