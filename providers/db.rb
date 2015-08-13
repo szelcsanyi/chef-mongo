@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: mongo
+# Cookbook Name:: L7-mongo
 # Provider:: db
 #
-# Copyright 2014, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
+# Copyright 2015, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
 
 def whyrun_supported?
   true
@@ -69,7 +69,7 @@ action :create do
 
   t = template "#{base}/etc/mongodb.conf" do
     source 'etc/mongodb.conf.erb'
-    cookbook 'mongo'
+    cookbook 'L7-mongo'
     owner 'root'
     group 'root'
     mode '0644'
@@ -114,7 +114,7 @@ action :create do
 
   t = template "/etc/init.d/mongodb-#{new_resource.name}" do
     source 'etc/init.d/mongodb-init.erb'
-    cookbook 'mongo'
+    cookbook 'L7-mongo'
     owner 'root'
     group 'root'
     mode '0755'
@@ -135,7 +135,7 @@ action :create do
 
   t = template "/etc/logrotate.d/mongodb-#{new_resource.name}-logs" do
     source 'etc/logrotate.d/mongodb-logs.erb'
-    cookbook 'mongo'
+    cookbook 'L7-mongo'
     owner 'root'
     group 'root'
     mode '0644'
