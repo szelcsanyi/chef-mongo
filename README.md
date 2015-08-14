@@ -9,6 +9,8 @@ Configures [Mongodb](http://mongodb.org) via Opscode Chef
 
 It can handle multiple instances with different configuratioins and differend versions on the same machine.
 
+Please note that this cookbook does not use the 10gen apt repository, and instead downloads the required binaries from a given server.
+
 ## Supported Platforms
 
 * Ubuntu 12.04+
