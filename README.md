@@ -26,12 +26,15 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 ## Usage
 ###Provider parameters:
 
-* `url`: url for mongodb binary tgz
+* `url`: url for mongodb binary tgz (default: https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.1.tgz)
 * `home`: directory for mongodb instance (default "/opt")
 * `bind_ip`: listen address (default "127.0.0.1")
 * `port`: listen port (default 27017)
 * `default_instance`: creates symlink (default false)
 * `replSet`: replica set name (default not set)
+* `smallfiles`: use smallfile allocation (default false)
+* `journal`: use durable journaling (default true)
+* `notablescan`: disables queries using fts (default true)
 
 #### A mongodb instance with custom parameters:
 ```ruby

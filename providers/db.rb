@@ -45,7 +45,7 @@ action :create do
     system true
     action :create
     only_if do
-      File.readlines('/etc/passwd').grep(/^mongodb/).size <= 0
+      ::File.readlines('/etc/passwd').grep(/^mongodb/).size <= 0
     end
   end
 
@@ -81,7 +81,10 @@ action :create do
       pidfile: base + '/var/mongodb.pid',
       log: base + '/log/mongodb.log',
       datadir: base + '/data',
-      replSet: new_resource.replSet
+      replSet: new_resource.replSet,
+      notablescan: new_resource.notablescan,
+      smallfiles: new_resource.smallfiles,
+      journal: new_resource.journal
     )
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)
@@ -92,7 +95,7 @@ action :create do
     end
   end
 
-  filename = File.basename(new_resource.url)
+  filename = ::File.basename(new_resource.url)
   dirname = filename.sub(/(\.tar\.gz$|\.tgz$)/, '')
 
   bash 'get_mongodb_binary' do
@@ -103,7 +106,7 @@ action :create do
     tar -zxf #{filename}
     EOH
     not_if do
-      File.exist?(base + '/' + filename)
+      ::File.exist?(base + '/' + filename)
     end
   end
 

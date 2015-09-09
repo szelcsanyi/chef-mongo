@@ -18,7 +18,13 @@ bind_ip = <%= Array(@bind_ip).join(',') %>
 directoryperdb = true
 
 # Disables write-ahead journaling
-# nojournal = true
+<% if @journal %>
+journal = true
+nojournal = false
+<% else %>
+journal = false
+nojournal = true
+<% end %>
 
 # Enables periodic logging of CPU utilization and I/O wait
 #cpu = true
@@ -56,7 +62,7 @@ directoryperdb = true
 #noscripting = true
 
 # Turns off table scans.  Any query that would do a table scan fails.
-#notablescan = true
+notablescan = <%= @notablescan %>
 
 # Disable data file preallocation.
 #noprealloc = true
@@ -71,3 +77,6 @@ directoryperdb = true
 
 # Unix socket
 unixSocketPrefix = <%= @socket %>
+
+# Smallfiles
+smallfiles = <%= @smallfiles %>
