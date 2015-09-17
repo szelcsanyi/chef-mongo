@@ -17,6 +17,8 @@ attribute :replSet, kind_of: [NilClass, String], default: nil
 attribute :notablescan, kind_of: [FalseClass, TrueClass], default: true
 attribute :smallfiles, kind_of: [FalseClass, TrueClass], default: true
 attribute :journal, kind_of: [FalseClass, TrueClass], default: true
+attribute :user, kind_of: String, default: 'mongodb'
+attribute :group, kind_of: String, default: 'mongodb'
 
 def initialize(*args)
   super
