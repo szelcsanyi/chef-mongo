@@ -21,18 +21,15 @@ directoryperdb = true
 <% if @journal %>
 journal = true
 <% else %>
-nojournal = true
+journal = false
 <% end %>
 
 # Enables periodic logging of CPU utilization and I/O wait
 #cpu = true
 
 # Turn on/off security.  Off is currently the default
-<% if @auth %>
-auth = true
-<% else %>
-noauth = true
-<% end %>
+#noauth = true
+#auth = true
 
 # Verbose logging output.
 #verbose = true
@@ -81,9 +78,3 @@ unixSocketPrefix = <%= @socket %>
 
 # Smallfiles
 smallfiles = <%= @smallfiles %>
-
-# REST interface
-rest = <%= @rest %>
-
-# HTTP interface
-httpinterface = <%= @httpinterface %>
