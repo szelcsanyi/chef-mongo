@@ -35,6 +35,8 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 * `smallfiles`: use smallfile allocation (default false)
 * `journal`: use durable journaling (default true)
 * `notablescan`: disables queries using fts (default true)
+* `rest`: enable rest interface for monitoring (default true)
+* `httpinterface`: enable http interface (default true)
 
 #### A mongodb instance with custom parameters:
 ```ruby
