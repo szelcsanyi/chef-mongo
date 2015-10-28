@@ -93,7 +93,8 @@ action :create do
       smallfiles: new_resource.smallfiles,
       journal: new_resource.journal,
       rest: new_resource.rest,
-      httpinterface: new_resource.httpinterface
+      httpinterface: new_resource.httpinterface,
+      auth: new_resource.auth
     )
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)

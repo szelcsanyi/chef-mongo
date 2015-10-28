@@ -20,6 +20,7 @@ attribute :smallfiles, kind_of: [FalseClass, TrueClass], default: true
 attribute :journal, kind_of: [FalseClass, TrueClass], default: true
 attribute :rest, kind_of: [FalseClass, TrueClass], default: true
 attribute :httpinterface, kind_of: [FalseClass, TrueClass], default: true
+attribute :auth, kind_of: [FalseClass, TrueClass], default: false
 
 def initialize(*args)
   super
