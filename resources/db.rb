@@ -7,7 +7,7 @@
 actions :create, :remove
 
 attribute :name, kind_of: String, name_attribute: true
-attribute :cookbook, kind_of: String, default: 'mongo'
+attribute :cookbook, kind_of: String, default: 'L7-mongo'
 
 attribute :url, kind_of: String, default: 'https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.1.tgz'
 attribute :home, kind_of: String, default: '/opt'
