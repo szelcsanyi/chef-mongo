@@ -6,19 +6,19 @@
 
 actions :create, :remove
 
-attribute :name, kind_of: String, name_attribute: true
-attribute :cookbook, kind_of: String, default: 'mongo'
-attribute :url, kind_of: String, default: 'https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz'
-attribute :home, kind_of: String, default: '/opt'
-attribute :bind_ip, kind_of: [String, Array], default: '127.0.0.1'
-attribute :port, kind_of: [Integer, String], default: '27017'
-attribute :default_instance, kind_of: [FalseClass, TrueClass], default: false
-attribute :replSet, kind_of: [NilClass, String], default: nil
-attribute :notablescan, kind_of: [FalseClass, TrueClass], default: true
-attribute :smallfiles, kind_of: [FalseClass, TrueClass], default: true
-attribute :journal, kind_of: [FalseClass, TrueClass], default: true
-attribute :user, kind_of: String, default: 'mongodb'
-attribute :group, kind_of: String, default: 'mongodb'
+attribute :name, :kind_of => String, :name_attribute => true
+attribute :cookbook, :kind_of => String, :default => 'mongo'
+attribute :url, :kind_of => String, :default => 'https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.0.6.tgz'
+attribute :home, :kind_of => String, :default => '/opt'
+attribute :bind_ip, :kind_of => [String, Array], :default => '127.0.0.1'
+attribute :port, :kind_of => [Integer, String], :default => '27017'
+attribute :default_instance, :kind_of => [FalseClass, TrueClass], :default => false
+attribute :replSet, :kind_of => [NilClass, String], :default => nil
+attribute :notablescan, :kind_of => [FalseClass, TrueClass], :default => true
+attribute :smallfiles, :kind_of => [FalseClass, TrueClass], :default => true
+attribute :journal, :kind_of => [FalseClass, TrueClass], :default => true
+attribute :user, :kind_of => String, :default => 'mongodb'
+attribute :group, :kind_of => String, :default => 'mongodb'
 
 def initialize(*args)
   super
