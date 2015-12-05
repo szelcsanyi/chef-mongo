@@ -12,7 +12,8 @@ attribute :url, :kind_of => String, :default => 'https://fastdl.mongodb.org/linu
 attribute :home, :kind_of => String, :default => '/opt'
 attribute :bind_ip, :kind_of => [String, Array], :default => '127.0.0.1'
 attribute :port, :kind_of => [Integer, String], :default => '27017'
-attribute :default_instance, :kind_of => [FalseClass, TrueClass], :default => false
+attribute :default_instance, :kind_of => [FalseClass, TrueClass],
+                             :default => false
 attribute :replSet, :kind_of => [NilClass, String], :default => nil
 attribute :notablescan, :kind_of => [FalseClass, TrueClass], :default => true
 attribute :smallfiles, :kind_of => [FalseClass, TrueClass], :default => true
