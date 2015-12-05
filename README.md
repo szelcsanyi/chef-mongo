@@ -1,4 +1,4 @@
-# L7-mongo cookbook
+`# L7-mongo cookbook
 [![Build Status](https://travis-ci.org/szelcsanyi/chef-mongo.svg?branch=master)](https://travis-ci.org/szelcsanyi/chef-mongo)
 [![security](https://hakiri.io/github/szelcsanyi/chef-mongo/master.svg)](https://hakiri.io/github/szelcsanyi/chef-mongo/master)
 [![Cookbook Version](https://img.shields.io/cookbook/v/L7-mongo.svg?style=flat)](https://supermarket.chef.io/cookbooks/L7-mongo)

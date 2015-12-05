@@ -24,3 +24,5 @@ def initialize(*args)
   super
   @action = :create
 end
+
+provides :L7_mongo_db
