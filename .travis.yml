@@ -5,5 +5,5 @@ rvm:
   - 2.1.2
 
 script:
-  - bundle exec foodcritic -f any . --tags ~FC015 --tags ~FC017 --tags ~FC023
-  - bundle exec rubocop
+  - bundle exec rake style
+  - bundle exec rake spec
