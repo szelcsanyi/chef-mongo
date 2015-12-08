@@ -12,5 +12,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[L7-mongo::default]
+      - recipe[mongo::default]
     attributes:

@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: L7-mongo
+# Cookbook Name:: mongo
 # Resources:: db
 #
 # Copyright 2015, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
@@ -26,4 +26,4 @@ def initialize(*args)
   @action = :create
 end
 
-provides :L7_mongo_db
+provides :mongo_db

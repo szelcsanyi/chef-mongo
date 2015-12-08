@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: L7-mongo
+# Cookbook Name:: mongo
 # Provider:: db
 #
 # Copyright 2015, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
@@ -76,7 +76,7 @@ action :create do
 
   t = template "#{base}/etc/mongodb.conf" do
     source 'etc/mongodb.conf.erb'
-    cookbook 'L7-mongo'
+    cookbook 'mongo'
     owner new_resource.user
     group new_resource.group
     mode '0644'
@@ -155,7 +155,7 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
 
   t = template "/etc/init.d/mongodb-#{new_resource.name}" do
     source 'etc/init.d/mongodb-init.erb'
-    cookbook 'L7-mongo'
+    cookbook 'mongo'
     owner 'root'
     group 'root'
     mode '0755'
@@ -176,7 +176,7 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
 
   t = template "/etc/logrotate.d/mongodb-#{new_resource.name}-logs" do
     source 'etc/logrotate.d/mongodb-logs.erb'
-    cookbook 'L7-mongo'
+    cookbook 'mongo'
     owner 'root'
     group 'root'
     mode '0644'
