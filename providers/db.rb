@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: L7-mongo
+# Cookbook Name:: mongo
 # Provider:: db
 #
 # Copyright 2015, Gabor Szelcsanyi <szelcsanyi.gabor@gmail.com>
@@ -40,13 +40,13 @@ action :create do
 
   base = "#{new_resource.home}/mongodb-#{new_resource.name}"
 
-  group 'mongodb' do
+  group new_resource.user do
     action :create
     system true
   end
 
-  user 'mongodb' do
-    gid 'mongodb'
+  user new_resource.group do
+    gid new_resource.group
     shell '/bin/false'
     home '/tmp'
     system true
@@ -57,8 +57,8 @@ action :create do
   end
 
   directory base do
-    owner 'root'
-    group 'root'
+    owner new_resource.user
+    group new_resource.group
     mode '0755'
     action :create
     recursive true
@@ -66,8 +66,8 @@ action :create do
 
   %w( etc data log var ).each do |dirname|
     directory "#{base}/#{dirname}" do
-      owner 'mongodb'
-      group 'mongodb'
+      owner new_resource.user
+      group new_resource.group
       mode '0750'
       action :create
       recursive false
@@ -76,25 +76,25 @@ action :create do
 
   t = template "#{base}/etc/mongodb.conf" do
     source 'etc/mongodb.conf.erb'
-    cookbook 'L7-mongo'
-    owner 'root'
-    group 'root'
+    cookbook 'mongo'
+    owner new_resource.user
+    group new_resource.group
     mode '0644'
     variables(
-      name: new_resource.name,
-      port: new_resource.port,
-      bind_ip: new_resource.bind_ip,
-      socket: base + '/var',
-      pidfile: base + '/var/mongodb.pid',
-      log: base + '/log/mongodb.log',
-      datadir: base + '/data',
-      replSet: new_resource.replSet,
-      notablescan: new_resource.notablescan,
-      smallfiles: new_resource.smallfiles,
-      journal: new_resource.journal,
-      rest: new_resource.rest,
-      httpinterface: new_resource.httpinterface,
-      auth: new_resource.auth
+      :name => new_resource.name,
+      :port => new_resource.port,
+      :bind_ip => new_resource.bind_ip,
+      :socket => base + '/var',
+      :pidfile => base + '/var/mongodb.pid',
+      :log => base + '/log/mongodb.log',
+      :datadir => base + '/data',
+      :replSet => new_resource.replSet,
+      :notablescan => new_resource.notablescan,
+      :smallfiles => new_resource.smallfiles,
+      :journal => new_resource.journal,
+      :rest => new_resource.rest,
+      :httpinterface => new_resource.httpinterface,
+      :auth => new_resource.auth
     )
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)
@@ -155,33 +155,33 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
 
   t = template "/etc/init.d/mongodb-#{new_resource.name}" do
     source 'etc/init.d/mongodb-init.erb'
-    cookbook 'L7-mongo'
+    cookbook 'mongo'
     owner 'root'
     group 'root'
     mode '0755'
     variables(
-      daemon: "#{base}/current/bin/mongod",
-      datadir: "#{base}/data",
-      config: "#{base}/etc/mongodb.conf",
-      name: "mongodb-#{new_resource.name}",
-      pid: "#{base}/var/mongodb.pid"
+      :daemon => "#{base}/current/bin/mongod",
+      :datadir => "#{base}/data",
+      :config => "#{base}/etc/mongodb.conf",
+      :name => "mongodb-#{new_resource.name}",
+      :pid => "#{base}/var/mongodb.pid"
     )
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)
 
   service "mongodb-#{new_resource.name}" do
     action :enable
-    supports status: true, restart: true
+    supports :status => true, :restart => true
   end
 
   t = template "/etc/logrotate.d/mongodb-#{new_resource.name}-logs" do
     source 'etc/logrotate.d/mongodb-logs.erb'
-    cookbook 'L7-mongo'
+    cookbook 'mongo'
     owner 'root'
     group 'root'
     mode '0644'
     variables(
-      cpath: "#{base}/log"
+      :cpath => "#{base}/log"
     )
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)
@@ -192,5 +192,4 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
       link_type :symbolic
     end
   end
-
 end
