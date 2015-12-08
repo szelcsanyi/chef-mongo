@@ -36,3 +36,6 @@ namespace :integration do
     end
   end
 end
+
+desc 'Run all checks'
+task :checkall => %w(style spec)
