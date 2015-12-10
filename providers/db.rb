@@ -40,13 +40,13 @@ action :create do
 
   base = "#{new_resource.home}/mongodb-#{new_resource.name}"
 
-  group 'mongodb' do
+  group new_resource.group do
     action :create
     system true
   end
 
-  user 'mongodb' do
-    gid 'mongodb'
+  user new_resource.user do
+    gid new_resource.group
     shell '/bin/false'
     home '/tmp'
     system true
@@ -66,8 +66,8 @@ action :create do
 
   %w( etc data log var ).each do |dirname|
     directory "#{base}/#{dirname}" do
-      owner 'mongodb'
-      group 'mongodb'
+      owner new_resource.user
+      group new_resource.group
       mode '0750'
       action :create
       recursive false

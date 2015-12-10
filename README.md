@@ -38,6 +38,8 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 * `rest`: enable rest interface for monitoring (default true)
 * `httpinterface`: enable http interface (default true)
 * `auth`: enable authentication (default false)
+* `user`: run mongodb as this user (default mongodb)
+* `group`: run mongodb as this group (default mongodb)
 
 #### A mongodb instance with custom parameters:
 ```ruby

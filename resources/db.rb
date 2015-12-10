@@ -21,6 +21,8 @@ attribute :journal, kind_of: [FalseClass, TrueClass], default: true
 attribute :rest, kind_of: [FalseClass, TrueClass], default: true
 attribute :httpinterface, kind_of: [FalseClass, TrueClass], default: true
 attribute :auth, kind_of: [FalseClass, TrueClass], default: false
+attribute :user, kind_of: String, default: 'mongodb'
+attribute :group, kind_of: String, default: 'mongodb'
 
 def initialize(*args)
   super
