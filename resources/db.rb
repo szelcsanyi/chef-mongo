@@ -24,6 +24,16 @@ attribute :auth, kind_of: [FalseClass, TrueClass], default: false
 attribute :user, kind_of: String, default: 'mongodb'
 attribute :group, kind_of: String, default: 'mongodb'
 
+attribute :backup, kind_of: [FalseClass, TrueClass], default: false
+attribute :backup_host, kind_of: [String, NilClass], default: nil
+attribute :backup_port, kind_of: [String, Integer, NilClass], default: 22
+attribute :backup_user, kind_of: [String, NilClass], default: nil
+attribute :backup_path, kind_of: [String, NilClass], default: nil
+attribute :backup_hour, kind_of: [String, Integer, NilClass], default: 2
+attribute :backup_minute, kind_of: [String, Integer, NilClass], default: 0
+attribute :backup_pubkey, kind_of: [String, NilClass], default: nil
+attribute :backup_privkey, kind_of: [String, NilClass], default: nil
+
 def initialize(*args)
   super
   @action = :create
