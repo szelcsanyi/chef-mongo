@@ -228,7 +228,8 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
       day '*'
       month '*'
       weekday '*'
-      command "#{base}/tools/backup_mongodb.sh >> #{base}/log/backup-mongodb-#{new_resource.name}.log 2>&1"
+      command "#{base}/tools/backup_mongodb.sh >> \
+#{base}/log/backup-mongodb-#{new_resource.name}.log 2>&1"
       user 'root'
       shell '/bin/bash'
     end
