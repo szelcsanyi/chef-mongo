@@ -40,6 +40,16 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 * `auth`: enable authentication (default false)
 * `user`: run mongodb as this user (default mongodb)
 * `group`: run mongodb as this group (default mongodb)
+* `backup`: do backup
+* `backup_host`: where the backup goes over ssh
+* `backup_port`: ssh port
+* `backup_user`: user name for ssh
+* `backup_path`: path to backup directory
+* `backup_hour`: at what hour should the backup be started (default 2am)
+* `backup_minute: at what minute should the backup be started (default 0)
+* `backup_pubkey`: ssh pulic key for backup user
+* `backup_privkey`: ssh private key for backup user
+
 
 #### A mongodb instance with custom parameters:
 ```ruby
