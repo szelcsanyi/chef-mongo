@@ -127,7 +127,7 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
     end
   end
 
-  %w( wget numactl pigz ).each do |pkg|
+  %w( wget numactl pigz jq ).each do |pkg|
     package pkg do
       action :install
     end
