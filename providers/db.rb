@@ -64,7 +64,7 @@ action :create do
     recursive true
   end
 
-  %w( etc data log var tools ).each do |dirname|
+  %w[etc data log var tools].each do |dirname|
     directory "#{base}/#{dirname}" do
       owner new_resource.user
       group new_resource.group
@@ -127,7 +127,7 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
     end
   end
 
-  %w( wget numactl pigz jq ).each do |pkg|
+  %w[wget numactl pigz jq].each do |pkg|
     package pkg do
       action :install
     end
@@ -198,8 +198,7 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
               backup_user: new_resource.backup_user,
               backup_host: new_resource.backup_host,
               backup_path: new_resource.backup_path,
-              backup_port: new_resource.backup_port
-    )
+              backup_port: new_resource.backup_port)
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)
 
@@ -245,5 +244,4 @@ rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
       link_type :symbolic
     end
   end
-
 end

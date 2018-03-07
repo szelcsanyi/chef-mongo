@@ -17,3 +17,6 @@ Style/SymbolArray:
 
 Style/ConditionalAssignment:
   EnforcedStyle: assign_inside_condition
+
+Metrics/BlockLength:
+  Enabled: false
