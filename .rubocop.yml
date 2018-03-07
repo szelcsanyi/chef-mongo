@@ -5,9 +5,15 @@ LineLength:
     - "**/metadata.rb"
     - "**/resources/*.rb"
 
-SingleSpaceBeforeFirstArg:
+SpaceBeforeFirstArg:
   Enabled: false  # too strict about metadata and certain formatting
 
 Encoding:
   Description: 'Use UTF-8 as the source file encoding.'
   Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: brackets
+
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
