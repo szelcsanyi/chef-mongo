@@ -83,7 +83,9 @@ unixSocketPrefix = <%= @socket %>
 smallfiles = <%= @smallfiles %>
 
 # REST interface
-rest = <%= @rest %>
+<% unless @rest.nil? %>rest = <%= @rest %>
+<% else %># rest not defined<% end %>
 
 # HTTP interface
-httpinterface = <%= @httpinterface %>
+<% unless @httpinterface.nil? %>httpinterface = <%= @httpinterface %>
+<% else %># httpinterface not defined<% end %>
