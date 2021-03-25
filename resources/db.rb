@@ -16,7 +16,7 @@ attribute :port, kind_of: [Integer, String], default: '27017'
 attribute :default_instance, kind_of: [FalseClass, TrueClass], default: false
 attribute :replSet, kind_of: [NilClass, String], default: nil
 attribute :notablescan, kind_of: [FalseClass, TrueClass], default: true
-attribute :smallfiles, kind_of: [FalseClass, TrueClass], default: true
+attribute :smallfiles, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :journal, kind_of: [FalseClass, TrueClass], default: true
 attribute :rest, kind_of: [FalseClass, TrueClass], default: true
 attribute :httpinterface, kind_of: [FalseClass, TrueClass], default: true

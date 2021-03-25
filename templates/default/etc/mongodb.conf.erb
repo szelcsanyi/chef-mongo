@@ -80,7 +80,8 @@ notablescan = <%= @notablescan %>
 unixSocketPrefix = <%= @socket %>
 
 # Smallfiles
-smallfiles = <%= @smallfiles %>
+<% unless @smallfiles.nil? %>smallfiles = <%= @smallfiles %>
+<% else %># smallfiles not defined<% end %>
 
 # REST interface
 <% unless @rest.nil? %>rest = <%= @rest %>
