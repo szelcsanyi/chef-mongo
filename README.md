@@ -7,7 +7,7 @@
 
 Configures [Mongodb](http://mongodb.org) via Opscode Chef
 
-It can handle multiple instances with different configuratioins and differend versions on the same machine.
+It can handle multiple instances with different configuratioins and different versions on the same machine.
 
 Please note that this cookbook does not use the 10gen apt repository, and instead downloads the required binaries from a given server.
 
@@ -18,13 +18,16 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 
 ## Recipes
 
-* `L7-mongo` - The default no-op recipe.
+* `L7-mongo`- The default no-op recipe.
 
 ## Providers
-* `L7_mongo_db` - Configures mongodb instance
+
+* `L7_mongo_db` - Configures a mongodb instance
+* `L7_mongo_s` - Configures a mongos instance
 
 ## Usage
-###Provider parameters:
+
+### Parameters for the `L7_mongo_db` provider:
 
 * `url`: url for mongodb binary tgz (default: https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-2.6.1.tgz)
 * `home`: directory for mongodb instance (default "/opt")
@@ -32,6 +35,8 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 * `port`: listen port (default 27017)
 * `default_instance`: creates symlink (default false)
 * `replSet`: replica set name (default not set)
+*  shardsvr : run as a shard server (default false)
+*  configsvr : run as a config server (default false)
 * `smallfiles`: use smallfile allocation (default false)
 * `journal`: use durable journaling (default true)
 * `notablescan`: disables queries using fts (default true)
@@ -52,6 +57,7 @@ Please note that this cookbook does not use the 10gen apt repository, and instea
 
 
 #### A mongodb instance with custom parameters:
+
 ```ruby
 L7_mongo_db 'example' do
     port '27017'
@@ -60,8 +66,28 @@ L7_mongo_db 'example' do
 end
 ```
 
+### Parameters for the `L7_mongo_s` provider
+
+* `bind_ip`: listen address (default "127.0.0.1")
+* `port`: listen port (default 27017)
+* `configdb` : Connection string for communicating with config servers
+* `localTreshold` : ping time (in ms) for a node to be considered local
+* `auth`: enable authentication (default false)
+* `user`: run mongos as this user (default mongos)
+* `group`: run mongos as this group (default mongos)
+
+#### An example mongos instance declaration
+
+```ruby
+L7_mongo_s 'example' do
+    port '27017'
+    bind_ip '0.0.0.0'
+    configdb 'cfg/configdb.mongodbcluster0.example.com:27019'
+end
+```
+
 ## TODO
-Implement sharded cluster support.
+
 
 ## Contributing
 

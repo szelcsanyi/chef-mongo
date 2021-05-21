@@ -15,11 +15,13 @@ attribute :bind_ip, kind_of: [String, Array], default: '127.0.0.1'
 attribute :port, kind_of: [Integer, String], default: '27017'
 attribute :default_instance, kind_of: [FalseClass, TrueClass], default: false
 attribute :replSet, kind_of: [NilClass, String], default: nil
+attribute :shardsvr, kind_of: [NilClass, FalseClass, TrueClass], default: nil
+attribute :configsvr, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :notablescan, kind_of: [FalseClass, TrueClass], default: true
-attribute :smallfiles, kind_of: [FalseClass, TrueClass], default: true
+attribute :smallfiles, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :journal, kind_of: [FalseClass, TrueClass], default: true
-attribute :rest, kind_of: [FalseClass, TrueClass], default: true
-attribute :httpinterface, kind_of: [FalseClass, TrueClass], default: true
+attribute :rest, kind_of: [NilClass, FalseClass, TrueClass], default: nil
+attribute :httpinterface, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :auth, kind_of: [FalseClass, TrueClass], default: false
 attribute :user, kind_of: String, default: 'mongodb'
 attribute :group, kind_of: String, default: 'mongodb'
