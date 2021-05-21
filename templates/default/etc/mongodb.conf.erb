@@ -73,14 +73,22 @@ notablescan = <%= @notablescan %>
 
 # Replication Options
 # in replica set configuration, specify the name of the replica set
-<% unless @replSet.nil? %>replSet = <%= @replSet %>
+<% unless @replSet.nil? %>replSet = <%= @replSet -%>
 <% else %># replSet not defined<% end %>
+
+# Shard Server Option
+<% unless @shardsvr.nil? %>shardsvr = <%= @shardsvr -%>
+<% else %># shardsvr not defined<% end %>
+
+# Config Server Option
+<% unless @configsvr.nil? %>configsvr = <%= @configsvr -%>
+<% else %># configsvr not defined<% end %>
 
 # Unix socket
 unixSocketPrefix = <%= @socket %>
 
 # Smallfiles
-<% unless @smallfiles.nil? %>smallfiles = <%= @smallfiles %>
+<% unless @smallfiles.nil? %>smallfiles = <%= @smallfiles -%>
 <% else %># smallfiles not defined<% end %>
 
 # REST interface
@@ -88,5 +96,5 @@ unixSocketPrefix = <%= @socket %>
 <% else %># rest not defined<% end %>
 
 # HTTP interface
-<% unless @httpinterface.nil? %>httpinterface = <%= @httpinterface %>
+<% unless @httpinterface.nil? %>httpinterface = <%= @httpinterface -%>
 <% else %># httpinterface not defined<% end %>

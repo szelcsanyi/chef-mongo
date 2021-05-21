@@ -61,7 +61,7 @@ NAME=<%= @name %>
 # http://dochub.mongodb.org/core/configurationoptions
 CONF=<%= @config %>
 PIDFILE=<%= @pid %>
-ENABLE_MONGODB=yes
+ENABLE_MONGOS=yes
         
 # Handle NUMA access to CPUs (SERVER-3574)
 # This verifies the existence of numactl as well as testing that the command works
@@ -80,7 +80,7 @@ if test ! -x $DAEMON; then
     exit 0
 fi
 
-if test "x$ENABLE_MONGODB" != "xyes"; then
+if test "x$ENABLE_MONGOS" != "xyes"; then
     exit 0
 fi
     
@@ -92,7 +92,7 @@ DIETIME=10                  # Time to wait for the server to die, in seconds
                             # let some servers to die gracefully and
                             # 'restart' will not work
           
-DAEMONUSER=${DAEMONUSER:-mongodb}
+DAEMONUSER=${DAEMONUSER:-mongos}
           
 set -e
 
@@ -249,7 +249,7 @@ case "$1" in
             exit 1
         fi
         ;;
-  # MongoDB can't reload its configuration.
+  # Mongos can't reload its configuration.
   reload)
         log_warning_msg "Reloading $NAME daemon: not implemented, as the daemon"
         log_warning_msg "cannot re-read the config file (use restart)."
