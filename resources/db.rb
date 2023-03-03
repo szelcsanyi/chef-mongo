@@ -18,14 +18,10 @@ attribute :replSet, kind_of: [NilClass, String], default: nil
 attribute :shardsvr, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :configsvr, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :notablescan, kind_of: [FalseClass, TrueClass], default: true
-<<<<<<< HEAD
-attribute :journal, kind_of: [FalseClass, TrueClass], default: true
-=======
 attribute :smallfiles, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :journal, kind_of: [FalseClass, TrueClass], default: true
 attribute :rest, kind_of: [NilClass, FalseClass, TrueClass], default: nil
 attribute :httpinterface, kind_of: [NilClass, FalseClass, TrueClass], default: nil
->>>>>>> 04380c4c78a8b51588950019a28f9e18620ef2d6
 attribute :auth, kind_of: [FalseClass, TrueClass], default: false
 attribute :user, kind_of: String, default: 'mongodb'
 attribute :group, kind_of: String, default: 'mongodb'
