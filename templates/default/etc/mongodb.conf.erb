@@ -88,11 +88,7 @@ notablescan = <%= @notablescan %>
 unixSocketPrefix = <%= @socket %>
 
 # Smallfiles
-<<<<<<< HEAD
-<% unless @smallfiles.nil? %>smallfiles = <%= @smallfiles %>
-=======
 <% unless @smallfiles.nil? %>smallfiles = <%= @smallfiles -%>
->>>>>>> 04380c4c78a8b51588950019a28f9e18620ef2d6
 <% else %># smallfiles not defined<% end %>
 
 # REST interface
@@ -100,9 +96,5 @@ unixSocketPrefix = <%= @socket %>
 <% else %># rest not defined<% end %>
 
 # HTTP interface
-<<<<<<< HEAD
-<% unless @httpinterface.nil? %>httpinterface = <%= @httpinterface %>
-=======
 <% unless @httpinterface.nil? %>httpinterface = <%= @httpinterface -%>
->>>>>>> 04380c4c78a8b51588950019a28f9e18620ef2d6
 <% else %># httpinterface not defined<% end %>
