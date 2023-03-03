@@ -90,41 +90,18 @@ action :create do
       datadir: base + '/data',
       replSet: new_resource.replSet,
       notablescan: new_resource.notablescan,
-      smallfiles: new_resource.smallfiles,
       journal: new_resource.journal,
-      rest: new_resource.rest,
-      httpinterface: new_resource.httpinterface,
       auth: new_resource.auth
     )
   end
   new_resource.updated_by_last_action(t.updated_by_last_action?)
 
-  if new_resource.rest
-    cron_d "mongodb-#{new_resource.name}-monitoring" do
-      hour '*'
-      minute '*'
-      day '*'
-      month '*'
-      weekday '*'
-      command "if timeout 3 /usr/bin/wget --timeout=15 --tries=2 --quiet \
--O /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp \
-http://127.0.0.1:#{new_resource.port.to_i + 1000}/_status &> /dev/null; \
-then \
-sleep 1; mv /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp \
-/tmp/mongodb-monitoring-status-#{new_resource.port}; \
-else \
-rm -f /tmp/mongodb-monitoring-status-#{new_resource.port}.tmp; fi"
-      user 'root'
-      shell '/bin/bash'
-    end
-  else
-    cron_d "mongodb-#{new_resource.name}-monitoring" do
-      action :delete
-    end
+  cron_d "mongodb-#{new_resource.name}-monitoring" do
+    action :delete
+  end
 
-    file "/tmp/mongodb-monitoring-status-#{new_resource.port}" do
-      action :delete
-    end
+  file "/tmp/mongodb-monitoring-status-#{new_resource.port}" do
+    action :delete
   end
 
   %w[wget numactl pigz jq].each do |pkg|
