@@ -9,7 +9,7 @@ def whyrun_supported?
 end
 
 action :remove do
-  service new_resource.name do
+  service "mongodb-#{new_resource.name}" do
     action [:stop, :disable]
   end
 
@@ -45,14 +45,16 @@ action :create do
     system true
   end
 
-  user new_resource.user do
+  user new_resource.user do # ~FC021
     gid new_resource.group
     shell '/bin/false'
     home '/tmp'
     system true
     action :create
     only_if do
-      ::File.readlines('/etc/passwd').grep(/^mongodb/).size <= 0
+      ::File.readlines('/etc/passwd')
+            .grep(/^#{Regexp.quote(new_resource.user)}/)
+            .size <= 0
     end
   end
 
@@ -89,6 +91,8 @@ action :create do
       log: base + '/log/mongodb.log',
       datadir: base + '/data',
       replSet: new_resource.replSet,
+      shardsvr: new_resource.shardsvr,
+      configsvr: new_resource.configsvr,
       notablescan: new_resource.notablescan,
       journal: new_resource.journal,
       auth: new_resource.auth
